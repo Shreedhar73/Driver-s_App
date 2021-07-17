@@ -8,6 +8,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mdi/mdi.dart';
 import 'package:get/get.dart';
 
+import 'homeDashboard.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key key}) : super(key: key);
 
@@ -23,7 +25,6 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: AppColors.black,
       body: SafeArea(
         child: Container(
           height: MediaQuery.of(context).size.height,
@@ -42,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.fromLTRB(8, 2, 8, 2),
-                        child: Text("Login To your Account",
+                        child: Text("Login To your Accountxxxx",
                             style: Theme.of(context)
                                 .primaryTextTheme
                                 .headline5
@@ -111,8 +112,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           label: "LOGIN",
                           onPress: () {
                             //TODO validate and navigate to dashboard.
-                            print("Hello");
-                            AuthService().login(email, password).then((val) {
+
+                            ApiService().login(email, password).then((val) {
                               // if(val.data['success']){
                               //   token = val.data['token'];
                               if (val) {
@@ -123,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     backgroundColor: Colors.red,
                                     textColor: Colors.white,
                                     fontSize: 18.0);
-                                Get.to("");
+                                Get.to(() => HomeDashboard());
                               }
                             });
                           },
